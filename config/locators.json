@@ -1,0 +1,11 @@
+{
+  "sonyPage_AcceptCookiesBtn": "#onetrust-button-group>button:last-child",
+  "sonyPage_menuButton": ".GlobalHeaderNavi>button",
+  "subMenu_List": ".GlobalHeaderNavi__NavListInner>ul>li>a",
+  "playStationpage_AcceptCookiesBtn": "#_evidon-accept-button",
+  "listOfSlides": "div.slider__control",
+  "classAttributeForSlides": "div.slider__control",
+  "specific_Slide": "(//img[@alt='*'])[1]",
+  "playStation_Popup": "div.lc-plays536-popup-top > div > a",
+  "slide_Images": "div.slider__control>div>div>figure>picture>img"
+}
