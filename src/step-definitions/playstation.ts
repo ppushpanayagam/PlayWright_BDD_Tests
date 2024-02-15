@@ -1,9 +1,7 @@
 import {Given, Then, When} from '@cucumber/cucumber';
-import { expect } from 'playwright/test';
 import * as sonyPage from '../pages/sony-page';
 import * as playStationPage from '../pages/playstation-page'
 import * as data from "../../config/data.json";
-import * as locator from "../../config/locators.json";
 
 //TODO
 /**
@@ -27,7 +25,8 @@ Given(
             screen: {page},
         } = this;
         
-        await sonyPage.navigateToSonyApplication(page, data.sonyUrl);
+        await sonyPage.navigateToSonyApplication(page, data.sonyUrl)
+        await sonyPage.verifySonyPageTitle(page, data.sonyPageTitle)
         await sonyPage.clickAcceptCookiesBtn(page)
     }
 )
@@ -45,19 +44,10 @@ When(
         await playStationPage.selectSubMenu(page, 'PlayStation');
         global.playStation = await pagePromise;
         await global.playStation.waitForLoadState();
-        await acceptCookies(locator.playStationpage_AcceptCookiesBtn);
+        await playStationPage.clickAcceptCookiesBtn()
 
     }
 )
-
-async function acceptCookies(locator:string) {
-    
-    const acceptButton_PlayStationPage = await global.playStation.locator(locator);
-        await acceptButton_PlayStationPage.waitFor({state: "visible"})
-        if(await acceptButton_PlayStationPage.isVisible()){
-            await acceptButton_PlayStationPage.click();
-        }
-}
 
 When(
     /^the user on the playstation home page$/,
@@ -71,24 +61,11 @@ When(
     /^the carousel slides should be displayed as expected$/,
     async function() {
 
-        const listOfSlideItems = await global.playStation.$$(locator.slide_Images);
-        await verifyDisplayedCarouselSlides(listOfSlideItems);
+        await playStationPage.verifyDisplayedCarouselSlides()
     
     }
 )
 
-async function verifyDisplayedCarouselSlides(listOfSlideItems) {
-    
-    const arr:string[] = ['Helldivers 2 keyart', ' Final Fantasy XVI Rebirth keyart', 'Ultros keyart', 'Tekken 8 keyart', 
-                            'COD Modern Warfare season 2 keyart', 'Overwatch 2 - Season 9 keyart'];
-        
-        var count = 0;
-        for(const menu of listOfSlideItems){
-
-            expect (await menu.getAttribute('alt')).toBe(arr[count]);
-            count = count + 1;
-        }
-}
 
 /**
  * Main objective of below step is to capture screenshot of the big banner and compare during the test but commented
@@ -100,8 +77,7 @@ When(
     /^the user select the "([^"]*)" only by one$/,
     async function(slideToSelect: string) {
 
-        const listOfSlideItems = await global.playStation.$$(locator.slide_Images);
-        await clickOnSpecificSlide(listOfSlideItems, slideToSelect);
+        await playStationPage.clickOnSpecificSlideToViewTheBanner(slideToSelect);
     }
 )
 
@@ -109,40 +85,15 @@ Then(
     /^the user should see the corresponding banner for selected "([^"]*)"$/,
     async function(slideToSelect: string) {
 
-        const bigBanner = locator.specific_Slide.replace('*', slideToSelect);
-        expect(await global.playStation.locator(bigBanner).getAttribute('alt')).toBe(slideToSelect);
+        await playStationPage.verifyWhetherSelectedSlideIsDisplayed(slideToSelect)
     }
 )
-
-async function clickOnSpecificSlide (listOfSlide, slideToSelect){
-
-    for(const slide of listOfSlide){
-        const str = await slide.getAttribute('alt');
-        if(str === slideToSelect){
-            await slide.click();
-        }
-    }
-}
-
-async function verifySelectedAndNonSelectedSlides(listOfSlide, selectedSlide:string){
-    
-    for(const slide of listOfSlide){
-        let selector = locator.specificSlide.replace('*', selectedSlide);
-        const str = await global.playStation.locator(selector).getAttribute('alt');
-        if(str !== selectedSlide){
-            const attributeVal = await slide.getAttribute('class');
-            expect(attributeVal).not.toContain('is-selected');   
-        }
-    }
-}
 
 When(
     /^the user select a specific "([^"]*)" from carousel slides$/,
     async function(slideToSelect: string) {
 
-        const listOfSlides = await global.playStation.$$(locator.slide_Images);
-        await clickOnSpecificSlide(listOfSlides, slideToSelect);
-        
+        await playStationPage.clickOnSpecificSlideToViewTheBanner(slideToSelect);
     }
 )
 
@@ -159,7 +110,7 @@ Then(
     /^the carousel slides should move one by one automatically$/,
     async function() {
 
-        await verifySlideMoveAutomatically(locator.classAttributeForSlides);
+        await playStationPage.verifyMovingSlidesAutomatically()
     }
 )
 
@@ -167,9 +118,7 @@ Then(
     /^the user should see the corresponding banner for the selected "([^"]*)"$/,
     async function(selectedSlide:string) {
         
-        var banner = locator.specific_Slide;
-        const bigBanner = await global.playStation.locator(banner.replace('*', selectedSlide));
-        expect(await bigBanner).toBeVisible();
+        await playStationPage.verifyWhetherBannerDisplayedForSelectedSlide(selectedSlide);
     }
 )
 
@@ -177,18 +126,6 @@ Then(
     /^the user should see the other "([^"]*)" should not be selected$/,
     async function(slides:string) {
 
-        const listOfSlides = await global.playStation.$$(locator.listOfSlides);
-        await verifySelectedAndNonSelectedSlides(listOfSlides, slides);
+        await playStationPage.verifyNonSelectedSlides(slides)
     }
 )
-
-async function verifySlideMoveAutomatically(locator:string) {
-    
-    const listOfSlides = await global.playStation.$$(locator);
-    let count = 1;
-    for(const menu of listOfSlides){
-        expect(await menu.getAttribute('class')).toContain('is-selected');
-        await global.playStation.waitForTimeout(3000)
-        count = count + 1;
-    }
-}

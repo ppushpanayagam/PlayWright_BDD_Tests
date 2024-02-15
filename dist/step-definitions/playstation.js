@@ -6,7 +6,6 @@ var _test = require("playwright/test");
 var sonyPage = _interopRequireWildcard(require("../pages/sony-page"));
 var playStationPage = _interopRequireWildcard(require("../pages/playstation-page"));
 var data = _interopRequireWildcard(require("../../config/data.json"));
-var locator = _interopRequireWildcard(require("../../config/locators.json"));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
@@ -39,8 +38,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return sonyPage.navigateToSonyApplication(page, data.sonyUrl);
       case 3:
         _context.next = 5;
-        return sonyPage.clickAcceptCookiesBtn(page);
+        return sonyPage.verifySonyPageTitle(page, data.sonyPageTitle);
       case 5:
+        _context.next = 7;
+        return sonyPage.clickAcceptCookiesBtn(page);
+      case 7:
       case "end":
         return _context.stop();
     }
@@ -67,48 +69,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return global.playStation.waitForLoadState();
       case 11:
         _context2.next = 13;
-        return acceptCookies(locator.playStationpage_AcceptCookiesBtn);
+        return playStationPage.clickAcceptCookiesBtn();
       case 13:
       case "end":
         return _context2.stop();
     }
   }, _callee2, this);
 })));
-function acceptCookies(_x) {
-  return _acceptCookies.apply(this, arguments);
-}
-function _acceptCookies() {
-  _acceptCookies = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(locator) {
-    var acceptButton_PlayStationPage;
-    return _regeneratorRuntime().wrap(function _callee12$(_context12) {
-      while (1) switch (_context12.prev = _context12.next) {
-        case 0:
-          _context12.next = 2;
-          return global.playStation.locator(locator);
-        case 2:
-          acceptButton_PlayStationPage = _context12.sent;
-          _context12.next = 5;
-          return acceptButton_PlayStationPage.waitFor({
-            state: "visible"
-          });
-        case 5:
-          _context12.next = 7;
-          return acceptButton_PlayStationPage.isVisible();
-        case 7:
-          if (!_context12.sent) {
-            _context12.next = 10;
-            break;
-          }
-          _context12.next = 10;
-          return acceptButton_PlayStationPage.click();
-        case 10:
-        case "end":
-          return _context12.stop();
-      }
-    }, _callee12);
-  }));
-  return _acceptCookies.apply(this, arguments);
-}
 (0, _cucumber.When)(/^the user on the playstation home page$/, /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
   return _regeneratorRuntime().wrap(function _callee3$(_context3) {
     while (1) switch (_context3.prev = _context3.next) {
@@ -122,245 +89,72 @@ function _acceptCookies() {
   }, _callee3);
 })));
 (0, _cucumber.When)(/^the carousel slides should be displayed as expected$/, /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-  var listOfSlideItems;
   return _regeneratorRuntime().wrap(function _callee4$(_context4) {
     while (1) switch (_context4.prev = _context4.next) {
       case 0:
         _context4.next = 2;
-        return global.playStation.$$(locator.slide_Images);
+        return playStationPage.verifyDisplayedCarouselSlides();
       case 2:
-        listOfSlideItems = _context4.sent;
-        _context4.next = 5;
-        return verifyDisplayedCarouselSlides(listOfSlideItems);
-      case 5:
       case "end":
         return _context4.stop();
     }
   }, _callee4);
 })));
-function verifyDisplayedCarouselSlides(_x2) {
-  return _verifyDisplayedCarouselSlides.apply(this, arguments);
-}
+
 /**
  * Main objective of below step is to capture screenshot of the big banner and compare during the test but commented
  * lines are not working with cucumber for some reason and I was able to achieve through regular TDD test approach.
  * 
  * So, I am trying to compate the property of the banner and confirm the selction of the slide.
  */
-function _verifyDisplayedCarouselSlides() {
-  _verifyDisplayedCarouselSlides = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(listOfSlideItems) {
-    var arr, count, _iterator, _step, menu;
-    return _regeneratorRuntime().wrap(function _callee13$(_context13) {
-      while (1) switch (_context13.prev = _context13.next) {
-        case 0:
-          arr = ['Helldivers 2 keyart', ' Final Fantasy XVI Rebirth keyart', 'Ultros keyart', 'Tekken 8 keyart', 'COD Modern Warfare season 2 keyart', 'Overwatch 2 - Season 9 keyart'];
-          count = 0;
-          _iterator = _createForOfIteratorHelper(listOfSlideItems);
-          _context13.prev = 3;
-          _iterator.s();
-        case 5:
-          if ((_step = _iterator.n()).done) {
-            _context13.next = 15;
-            break;
-          }
-          menu = _step.value;
-          _context13.t0 = _test.expect;
-          _context13.next = 10;
-          return menu.getAttribute('alt');
-        case 10:
-          _context13.t1 = _context13.sent;
-          (0, _context13.t0)(_context13.t1).toBe(arr[count]);
-          count = count + 1;
-        case 13:
-          _context13.next = 5;
-          break;
-        case 15:
-          _context13.next = 20;
-          break;
-        case 17:
-          _context13.prev = 17;
-          _context13.t2 = _context13["catch"](3);
-          _iterator.e(_context13.t2);
-        case 20:
-          _context13.prev = 20;
-          _iterator.f();
-          return _context13.finish(20);
-        case 23:
-        case "end":
-          return _context13.stop();
-      }
-    }, _callee13, null, [[3, 17, 20, 23]]);
-  }));
-  return _verifyDisplayedCarouselSlides.apply(this, arguments);
-}
 (0, _cucumber.When)(/^the user select the "([^"]*)" only by one$/, /*#__PURE__*/function () {
   var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(slideToSelect) {
-    var listOfSlideItems;
     return _regeneratorRuntime().wrap(function _callee5$(_context5) {
       while (1) switch (_context5.prev = _context5.next) {
         case 0:
           _context5.next = 2;
-          return global.playStation.$$(locator.slide_Images);
+          return playStationPage.clickOnSpecificSlideToViewTheBanner(slideToSelect);
         case 2:
-          listOfSlideItems = _context5.sent;
-          _context5.next = 5;
-          return clickOnSpecificSlide(listOfSlideItems, slideToSelect);
-        case 5:
         case "end":
           return _context5.stop();
       }
     }, _callee5);
   }));
-  return function (_x3) {
+  return function (_x) {
     return _ref5.apply(this, arguments);
   };
 }());
 (0, _cucumber.Then)(/^the user should see the corresponding banner for selected "([^"]*)"$/, /*#__PURE__*/function () {
   var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(slideToSelect) {
-    var bigBanner;
     return _regeneratorRuntime().wrap(function _callee6$(_context6) {
       while (1) switch (_context6.prev = _context6.next) {
         case 0:
-          bigBanner = locator.specific_Slide.replace('*', slideToSelect);
-          _context6.t0 = _test.expect;
-          _context6.next = 4;
-          return global.playStation.locator(bigBanner).getAttribute('alt');
-        case 4:
-          _context6.t1 = _context6.sent;
-          (0, _context6.t0)(_context6.t1).toBe(slideToSelect);
-        case 6:
+          _context6.next = 2;
+          return playStationPage.verifyWhetherSelectedSlideIsDisplayed(slideToSelect);
+        case 2:
         case "end":
           return _context6.stop();
       }
     }, _callee6);
   }));
-  return function (_x4) {
+  return function (_x2) {
     return _ref6.apply(this, arguments);
   };
 }());
-function clickOnSpecificSlide(_x5, _x6) {
-  return _clickOnSpecificSlide.apply(this, arguments);
-}
-function _clickOnSpecificSlide() {
-  _clickOnSpecificSlide = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(listOfSlide, slideToSelect) {
-    var _iterator2, _step2, slide, str;
-    return _regeneratorRuntime().wrap(function _callee14$(_context14) {
-      while (1) switch (_context14.prev = _context14.next) {
-        case 0:
-          _iterator2 = _createForOfIteratorHelper(listOfSlide);
-          _context14.prev = 1;
-          _iterator2.s();
-        case 3:
-          if ((_step2 = _iterator2.n()).done) {
-            _context14.next = 13;
-            break;
-          }
-          slide = _step2.value;
-          _context14.next = 7;
-          return slide.getAttribute('alt');
-        case 7:
-          str = _context14.sent;
-          if (!(str === slideToSelect)) {
-            _context14.next = 11;
-            break;
-          }
-          _context14.next = 11;
-          return slide.click();
-        case 11:
-          _context14.next = 3;
-          break;
-        case 13:
-          _context14.next = 18;
-          break;
-        case 15:
-          _context14.prev = 15;
-          _context14.t0 = _context14["catch"](1);
-          _iterator2.e(_context14.t0);
-        case 18:
-          _context14.prev = 18;
-          _iterator2.f();
-          return _context14.finish(18);
-        case 21:
-        case "end":
-          return _context14.stop();
-      }
-    }, _callee14, null, [[1, 15, 18, 21]]);
-  }));
-  return _clickOnSpecificSlide.apply(this, arguments);
-}
-function verifySelectedAndNonSelectedSlides(_x7, _x8) {
-  return _verifySelectedAndNonSelectedSlides.apply(this, arguments);
-}
-function _verifySelectedAndNonSelectedSlides() {
-  _verifySelectedAndNonSelectedSlides = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(listOfSlide, selectedSlide) {
-    var _iterator3, _step3, slide, selector, str, attributeVal;
-    return _regeneratorRuntime().wrap(function _callee15$(_context15) {
-      while (1) switch (_context15.prev = _context15.next) {
-        case 0:
-          _iterator3 = _createForOfIteratorHelper(listOfSlide);
-          _context15.prev = 1;
-          _iterator3.s();
-        case 3:
-          if ((_step3 = _iterator3.n()).done) {
-            _context15.next = 16;
-            break;
-          }
-          slide = _step3.value;
-          selector = locator.specificSlide.replace('*', selectedSlide);
-          _context15.next = 8;
-          return global.playStation.locator(selector).getAttribute('alt');
-        case 8:
-          str = _context15.sent;
-          if (!(str !== selectedSlide)) {
-            _context15.next = 14;
-            break;
-          }
-          _context15.next = 12;
-          return slide.getAttribute('class');
-        case 12:
-          attributeVal = _context15.sent;
-          (0, _test.expect)(attributeVal).not.toContain('is-selected');
-        case 14:
-          _context15.next = 3;
-          break;
-        case 16:
-          _context15.next = 21;
-          break;
-        case 18:
-          _context15.prev = 18;
-          _context15.t0 = _context15["catch"](1);
-          _iterator3.e(_context15.t0);
-        case 21:
-          _context15.prev = 21;
-          _iterator3.f();
-          return _context15.finish(21);
-        case 24:
-        case "end":
-          return _context15.stop();
-      }
-    }, _callee15, null, [[1, 18, 21, 24]]);
-  }));
-  return _verifySelectedAndNonSelectedSlides.apply(this, arguments);
-}
 (0, _cucumber.When)(/^the user select a specific "([^"]*)" from carousel slides$/, /*#__PURE__*/function () {
   var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(slideToSelect) {
-    var listOfSlides;
     return _regeneratorRuntime().wrap(function _callee7$(_context7) {
       while (1) switch (_context7.prev = _context7.next) {
         case 0:
           _context7.next = 2;
-          return global.playStation.$$(locator.slide_Images);
+          return playStationPage.clickOnSpecificSlideToViewTheBanner(slideToSelect);
         case 2:
-          listOfSlides = _context7.sent;
-          _context7.next = 5;
-          return clickOnSpecificSlide(listOfSlides, slideToSelect);
-        case 5:
         case "end":
           return _context7.stop();
       }
     }, _callee7);
   }));
-  return function (_x9) {
+  return function (_x3) {
     return _ref7.apply(this, arguments);
   };
 }());
@@ -381,7 +175,7 @@ function _verifySelectedAndNonSelectedSlides() {
     while (1) switch (_context9.prev = _context9.next) {
       case 0:
         _context9.next = 2;
-        return verifySlideMoveAutomatically(locator.classAttributeForSlides);
+        return playStationPage.verifyMovingSlidesAutomatically();
       case 2:
       case "end":
         return _context9.stop();
@@ -390,105 +184,90 @@ function _verifySelectedAndNonSelectedSlides() {
 })));
 (0, _cucumber.Then)(/^the user should see the corresponding banner for the selected "([^"]*)"$/, /*#__PURE__*/function () {
   var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(selectedSlide) {
-    var banner, bigBanner;
     return _regeneratorRuntime().wrap(function _callee10$(_context10) {
       while (1) switch (_context10.prev = _context10.next) {
         case 0:
-          banner = locator.specific_Slide;
-          _context10.next = 3;
-          return global.playStation.locator(banner.replace('*', selectedSlide));
-        case 3:
-          bigBanner = _context10.sent;
-          _context10.t0 = _test.expect;
-          _context10.next = 7;
-          return bigBanner;
-        case 7:
-          _context10.t1 = _context10.sent;
-          (0, _context10.t0)(_context10.t1).toBeVisible();
-        case 9:
+          _context10.next = 2;
+          return playStationPage.verifyWhetherBannerDisplayedForSelectedSlide(selectedSlide);
+        case 2:
         case "end":
           return _context10.stop();
       }
     }, _callee10);
   }));
-  return function (_x10) {
+  return function (_x4) {
     return _ref10.apply(this, arguments);
   };
 }());
 (0, _cucumber.Then)(/^the user should see the other "([^"]*)" should not be selected$/, /*#__PURE__*/function () {
   var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(slides) {
-    var listOfSlides;
     return _regeneratorRuntime().wrap(function _callee11$(_context11) {
       while (1) switch (_context11.prev = _context11.next) {
         case 0:
           _context11.next = 2;
-          return global.playStation.$$(locator.listOfSlides);
+          return playStationPage.verifyNonSelectedSlides(slides);
         case 2:
-          listOfSlides = _context11.sent;
-          _context11.next = 5;
-          return verifySelectedAndNonSelectedSlides(listOfSlides, slides);
-        case 5:
         case "end":
           return _context11.stop();
       }
     }, _callee11);
   }));
-  return function (_x11) {
+  return function (_x5) {
     return _ref11.apply(this, arguments);
   };
 }());
-function verifySlideMoveAutomatically(_x12) {
+function verifySlideMoveAutomatically(_x6) {
   return _verifySlideMoveAutomatically.apply(this, arguments);
 }
 function _verifySlideMoveAutomatically() {
-  _verifySlideMoveAutomatically = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(locator) {
-    var listOfSlides, count, _iterator4, _step4, menu;
-    return _regeneratorRuntime().wrap(function _callee16$(_context16) {
-      while (1) switch (_context16.prev = _context16.next) {
+  _verifySlideMoveAutomatically = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(locator) {
+    var listOfSlides, count, _iterator, _step, menu;
+    return _regeneratorRuntime().wrap(function _callee12$(_context12) {
+      while (1) switch (_context12.prev = _context12.next) {
         case 0:
-          _context16.next = 2;
+          _context12.next = 2;
           return global.playStation.$$(locator);
         case 2:
-          listOfSlides = _context16.sent;
+          listOfSlides = _context12.sent;
           count = 1;
-          _iterator4 = _createForOfIteratorHelper(listOfSlides);
-          _context16.prev = 5;
-          _iterator4.s();
+          _iterator = _createForOfIteratorHelper(listOfSlides);
+          _context12.prev = 5;
+          _iterator.s();
         case 7:
-          if ((_step4 = _iterator4.n()).done) {
-            _context16.next = 19;
+          if ((_step = _iterator.n()).done) {
+            _context12.next = 19;
             break;
           }
-          menu = _step4.value;
-          _context16.t0 = _test.expect;
-          _context16.next = 12;
+          menu = _step.value;
+          _context12.t0 = _test.expect;
+          _context12.next = 12;
           return menu.getAttribute('class');
         case 12:
-          _context16.t1 = _context16.sent;
-          (0, _context16.t0)(_context16.t1).toContain('is-selected');
-          _context16.next = 16;
+          _context12.t1 = _context12.sent;
+          (0, _context12.t0)(_context12.t1).toContain('is-selected');
+          _context12.next = 16;
           return global.playStation.waitForTimeout(3000);
         case 16:
           count = count + 1;
         case 17:
-          _context16.next = 7;
+          _context12.next = 7;
           break;
         case 19:
-          _context16.next = 24;
+          _context12.next = 24;
           break;
         case 21:
-          _context16.prev = 21;
-          _context16.t2 = _context16["catch"](5);
-          _iterator4.e(_context16.t2);
+          _context12.prev = 21;
+          _context12.t2 = _context12["catch"](5);
+          _iterator.e(_context12.t2);
         case 24:
-          _context16.prev = 24;
-          _iterator4.f();
-          return _context16.finish(24);
+          _context12.prev = 24;
+          _iterator.f();
+          return _context12.finish(24);
         case 27:
         case "end":
-          return _context16.stop();
+          return _context12.stop();
       }
-    }, _callee16, null, [[5, 21, 24, 27]]);
+    }, _callee12, null, [[5, 21, 24, 27]]);
   }));
   return _verifySlideMoveAutomatically.apply(this, arguments);
 }
