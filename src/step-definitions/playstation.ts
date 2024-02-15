@@ -124,10 +124,11 @@ async function clickOnSpecificSlide (listOfSlide, slideToSelect){
     }
 }
 
-async function verifySelectedAndNonSelectedSlides(listOfSlide, selectedSlide){
+async function verifySelectedAndNonSelectedSlides(listOfSlide, selectedSlide:string){
     
     for(const slide of listOfSlide){
-        const str = await slide.textContent();
+        let selector = locator.specificSlide.replace('*', selectedSlide);
+        const str = await global.playStation.locator(selector).getAttribute('alt');
         if(str !== selectedSlide){
             const attributeVal = await slide.getAttribute('class');
             expect(attributeVal).not.toContain('is-selected');   
@@ -163,21 +164,21 @@ Then(
 )
 
 Then(
-    /^the user should see the corresponding banner for the selected slide$/,
-    async function() {
+    /^the user should see the corresponding banner for the selected "([^"]*)"$/,
+    async function(selectedSlide:string) {
         
         var banner = locator.specific_Slide;
-        const bigBanner = await global.playStation.locator(banner.replace('*', global.selectedSlide));
+        const bigBanner = await global.playStation.locator(banner.replace('*', selectedSlide));
         expect(await bigBanner).toBeVisible();
     }
 )
 
 Then(
-    /^the user should see the other slides should not be selected$/,
-    async function() {
+    /^the user should see the other "([^"]*)" should not be selected$/,
+    async function(slides:string) {
 
         const listOfSlides = await global.playStation.$$(locator.listOfSlides);
-        await verifySelectedAndNonSelectedSlides(listOfSlides, global.selectedSlide);
+        await verifySelectedAndNonSelectedSlides(listOfSlides, slides);
     }
 )
 

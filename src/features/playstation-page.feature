@@ -18,12 +18,16 @@ Background: Successfully log into Sony application
         | Tekken 8 keyart          |
         | Helldivers 2 keyart      |
   
-  Scenario: Successfully verify the slide selection and non selected slides
+  Scenario Outline: Successfully verify the slide selection and non selected slides
     Given the user on the playstation home page
-    When the user select a specific "Tekken 8 keyart" from carousel slides
-    Then the user should see the corresponding banner for the selected slide
-    And the user should see the other slides should not be selected
-  
-  # Scenario: Successfully verify auto rotation of the carousel slides
-  #   When the user on the playstation home page
-  #   Then the carousel slides should move one by one automatically
+    When the user select a specific "<slide>" from carousel slides
+    Then the user should see the corresponding banner for the selected "<slide>"
+    And the user should see the other "<slide>" should not be selected
+    Examples:
+        | slide                              |
+        | Ultros keyart                      |
+        | Overwatch 2 - Season 9 keyart      |
+  @dev
+  Scenario: Successfully verify auto rotation of the carousel slides
+    When the user on the playstation home page
+    Then the carousel slides should move one by one automatically

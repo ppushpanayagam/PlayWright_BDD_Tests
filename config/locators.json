@@ -8,5 +8,5 @@
   "specific_Slide": "(//img[@alt='*'])[1]",
   "playStation_Popup": "div.lc-plays536-popup-top > div > a",
   "slide_Images": "div.slider__control>div>div>figure>picture>img",
-  "Tekken": "//div/div[2]/div[4]/div/div/figure/picture/img"
+  "specificSlide": "(//img[@alt='*'])[1]"
 }

@@ -293,7 +293,7 @@ function verifySelectedAndNonSelectedSlides(_x7, _x8) {
 }
 function _verifySelectedAndNonSelectedSlides() {
   _verifySelectedAndNonSelectedSlides = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(listOfSlide, selectedSlide) {
-    var _iterator3, _step3, slide, str, attributeVal;
+    var _iterator3, _step3, slide, selector, str, attributeVal;
     return _regeneratorRuntime().wrap(function _callee15$(_context15) {
       while (1) switch (_context15.prev = _context15.next) {
         case 0:
@@ -302,42 +302,43 @@ function _verifySelectedAndNonSelectedSlides() {
           _iterator3.s();
         case 3:
           if ((_step3 = _iterator3.n()).done) {
-            _context15.next = 15;
+            _context15.next = 16;
             break;
           }
           slide = _step3.value;
-          _context15.next = 7;
-          return slide.textContent();
-        case 7:
+          selector = locator.specificSlide.replace('*', selectedSlide);
+          _context15.next = 8;
+          return global.playStation.locator(selector).getAttribute('alt');
+        case 8:
           str = _context15.sent;
           if (!(str !== selectedSlide)) {
-            _context15.next = 13;
+            _context15.next = 14;
             break;
           }
-          _context15.next = 11;
+          _context15.next = 12;
           return slide.getAttribute('class');
-        case 11:
+        case 12:
           attributeVal = _context15.sent;
           (0, _test.expect)(attributeVal).not.toContain('is-selected');
-        case 13:
+        case 14:
           _context15.next = 3;
           break;
-        case 15:
-          _context15.next = 20;
+        case 16:
+          _context15.next = 21;
           break;
-        case 17:
-          _context15.prev = 17;
+        case 18:
+          _context15.prev = 18;
           _context15.t0 = _context15["catch"](1);
           _iterator3.e(_context15.t0);
-        case 20:
-          _context15.prev = 20;
+        case 21:
+          _context15.prev = 21;
           _iterator3.f();
-          return _context15.finish(20);
-        case 23:
+          return _context15.finish(21);
+        case 24:
         case "end":
           return _context15.stop();
       }
-    }, _callee15, null, [[1, 17, 20, 23]]);
+    }, _callee15, null, [[1, 18, 21, 24]]);
   }));
   return _verifySelectedAndNonSelectedSlides.apply(this, arguments);
 }
@@ -387,46 +388,56 @@ function _verifySelectedAndNonSelectedSlides() {
     }
   }, _callee9);
 })));
-(0, _cucumber.Then)(/^the user should see the corresponding banner for the selected slide$/, /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10() {
-  var banner, bigBanner;
-  return _regeneratorRuntime().wrap(function _callee10$(_context10) {
-    while (1) switch (_context10.prev = _context10.next) {
-      case 0:
-        banner = locator.specific_Slide;
-        _context10.next = 3;
-        return global.playStation.locator(banner.replace('*', global.selectedSlide));
-      case 3:
-        bigBanner = _context10.sent;
-        _context10.t0 = _test.expect;
-        _context10.next = 7;
-        return bigBanner;
-      case 7:
-        _context10.t1 = _context10.sent;
-        (0, _context10.t0)(_context10.t1).toBeVisible();
-      case 9:
-      case "end":
-        return _context10.stop();
-    }
-  }, _callee10);
-})));
-(0, _cucumber.Then)(/^the user should see the other slides should not be selected$/, /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11() {
-  var listOfSlides;
-  return _regeneratorRuntime().wrap(function _callee11$(_context11) {
-    while (1) switch (_context11.prev = _context11.next) {
-      case 0:
-        _context11.next = 2;
-        return global.playStation.$$(locator.listOfSlides);
-      case 2:
-        listOfSlides = _context11.sent;
-        _context11.next = 5;
-        return verifySelectedAndNonSelectedSlides(listOfSlides, global.selectedSlide);
-      case 5:
-      case "end":
-        return _context11.stop();
-    }
-  }, _callee11);
-})));
-function verifySlideMoveAutomatically(_x10) {
+(0, _cucumber.Then)(/^the user should see the corresponding banner for the selected "([^"]*)"$/, /*#__PURE__*/function () {
+  var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(selectedSlide) {
+    var banner, bigBanner;
+    return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+      while (1) switch (_context10.prev = _context10.next) {
+        case 0:
+          banner = locator.specific_Slide;
+          _context10.next = 3;
+          return global.playStation.locator(banner.replace('*', selectedSlide));
+        case 3:
+          bigBanner = _context10.sent;
+          _context10.t0 = _test.expect;
+          _context10.next = 7;
+          return bigBanner;
+        case 7:
+          _context10.t1 = _context10.sent;
+          (0, _context10.t0)(_context10.t1).toBeVisible();
+        case 9:
+        case "end":
+          return _context10.stop();
+      }
+    }, _callee10);
+  }));
+  return function (_x10) {
+    return _ref10.apply(this, arguments);
+  };
+}());
+(0, _cucumber.Then)(/^the user should see the other "([^"]*)" should not be selected$/, /*#__PURE__*/function () {
+  var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(slides) {
+    var listOfSlides;
+    return _regeneratorRuntime().wrap(function _callee11$(_context11) {
+      while (1) switch (_context11.prev = _context11.next) {
+        case 0:
+          _context11.next = 2;
+          return global.playStation.$$(locator.listOfSlides);
+        case 2:
+          listOfSlides = _context11.sent;
+          _context11.next = 5;
+          return verifySelectedAndNonSelectedSlides(listOfSlides, slides);
+        case 5:
+        case "end":
+          return _context11.stop();
+      }
+    }, _callee11);
+  }));
+  return function (_x11) {
+    return _ref11.apply(this, arguments);
+  };
+}());
+function verifySlideMoveAutomatically(_x12) {
   return _verifySlideMoveAutomatically.apply(this, arguments);
 }
 function _verifySlideMoveAutomatically() {
