@@ -19,7 +19,7 @@ export const clickAcceptCookiesBtn = async (
     }
 };
 
-async function selectMenuItem(listOfMenu, menuToSelect:string){
+async function selectAnItemFromList(listOfMenu, menuToSelect:string){
     
     for(const menu of listOfMenu){
         let subMenu = await menu.textContent();
@@ -36,5 +36,13 @@ export const selectSubMenu = async (
 ): Promise<void> => {
         
     const listOfMenu = await page.$$(locator.subMenu_List);
-    selectMenuItem(listOfMenu, menu);
+    selectAnItemFromList(listOfMenu, menu);
+};
+
+export const clickSpecificSlide = async (
+    slideToSelect: string
+): Promise<void> => {
+        
+    const listOfSlides = await global.playStaionPage.$$(locator.slide_Images);
+    selectAnItemFromList(listOfSlides, slideToSelect);
 };

@@ -5,7 +5,6 @@ import * as playStationPage from '../pages/playstation-page'
 import * as data from "../../config/data.json";
 import * as locator from "../../config/locators.json";
 
-
 //TODO
 /**
  * Unable to implement SONY login functionality before redirecting the tests to Playstation application
@@ -28,8 +27,8 @@ Given(
             screen: {page},
         } = this;
         
-        sonyPage.navigateToSonyApplication(page, data.sonyUrl);
-        acceptCookies(locator.sonyPage_AcceptCookiesBtn);
+        await sonyPage.navigateToSonyApplication(page, data.sonyUrl);
+        await sonyPage.clickAcceptCookiesBtn(page)
     }
 )
 
@@ -41,12 +40,12 @@ When(
             screen: {page, context},
         } = this;
 
-        sonyPage.clickMenuButton(page);
+        await sonyPage.clickMenuButton(page);
         const pagePromise = context.waitForEvent('page');
-        playStationPage.selectSubMenu(page, 'PlayStation');
+        await playStationPage.selectSubMenu(page, 'PlayStation');
         global.playStation = await pagePromise;
         await global.playStation.waitForLoadState();
-        acceptCookies(locator.playStationpage_AcceptCookiesBtn);
+        await acceptCookies(locator.playStationpage_AcceptCookiesBtn);
 
     }
 )
@@ -64,7 +63,7 @@ When(
     /^the user on the playstation home page$/,
     async function() {
 
-        playStationPage.verifyPlayStationPageTitle(data.playStationPageTitle);
+        await playStationPage.verifyPlayStationPageTitle(data.playStationPageTitle);
     }
 )
 
@@ -73,15 +72,15 @@ When(
     async function() {
 
         const listOfSlideItems = await global.playStation.$$(locator.slide_Images);
-        verifyDisplayedCarouselSlides(listOfSlideItems);
+        await verifyDisplayedCarouselSlides(listOfSlideItems);
     
     }
 )
 
 async function verifyDisplayedCarouselSlides(listOfSlideItems) {
     
-    const arr:string[] = [' Final Fantasy XVI Rebirth keyart', 'Tekken 8 keyart', 'February LNY Sale keyart', 'Like A Dragon keyart', 
-                    'Suicide Squad keyart', 'Foamstars keyart'];
+    const arr:string[] = ['Helldivers 2 keyart', ' Final Fantasy XVI Rebirth keyart', 'Ultros keyart', 'Tekken 8 keyart', 
+                            'COD Modern Warfare season 2 keyart', 'Overwatch 2 - Season 9 keyart'];
         
         var count = 0;
         for(const menu of listOfSlideItems){
@@ -102,7 +101,7 @@ When(
     async function(slideToSelect: string) {
 
         const listOfSlideItems = await global.playStation.$$(locator.slide_Images);
-        clickOnSpecificSlide(listOfSlideItems, slideToSelect);
+        await clickOnSpecificSlide(listOfSlideItems, slideToSelect);
     }
 )
 
@@ -110,16 +109,15 @@ Then(
     /^the user should see the corresponding banner for selected "([^"]*)"$/,
     async function(slideToSelect: string) {
 
-        var banner = locator.specific_Slide;
-        const bigBanner = global.playStation.locator(banner.replace('*', slideToSelect));
-        expect(await bigBanner.textContent()).toBeVisible();
+        const bigBanner = locator.specific_Slide.replace('*', slideToSelect);
+        expect(await global.playStation.locator(bigBanner).getAttribute('alt')).toBe(slideToSelect);
     }
 )
 
 async function clickOnSpecificSlide (listOfSlide, slideToSelect){
 
     for(const slide of listOfSlide){
-        const str = await slide.textContent();
+        const str = await slide.getAttribute('alt');
         if(str === slideToSelect){
             await slide.click();
         }
@@ -142,8 +140,7 @@ When(
     async function(slideToSelect: string) {
 
         const listOfSlides = await global.playStation.$$(locator.slide_Images);
-        global.selectedSlide = slideToSelect;
-        clickOnSpecificSlide(listOfSlides, slideToSelect);
+        await clickOnSpecificSlide(listOfSlides, slideToSelect);
         
     }
 )
@@ -152,7 +149,7 @@ Then(
     /^the user should be redirected  to playstation application$/,
     async function() {
 
-       playStationPage.verifyPlayStationPageTitle(data.playStationPageTitle);
+       await playStationPage.verifyPlayStationPageTitle(data.playStationPageTitle);
     }
 )
 
@@ -161,7 +158,7 @@ Then(
     /^the carousel slides should move one by one automatically$/,
     async function() {
 
-        verifySlideMoveAutomatically(locator.classAttributeForSlides);
+        await verifySlideMoveAutomatically(locator.classAttributeForSlides);
     }
 )
 
@@ -170,8 +167,8 @@ Then(
     async function() {
         
         var banner = locator.specific_Slide;
-        const bigBanner = global.playStation.locator(banner.replace('*', global.selectedSlide));
-        expect(await bigBanner.textContent()).toBeVisible();
+        const bigBanner = await global.playStation.locator(banner.replace('*', global.selectedSlide));
+        expect(await bigBanner).toBeVisible();
     }
 )
 
@@ -180,7 +177,7 @@ Then(
     async function() {
 
         const listOfSlides = await global.playStation.$$(locator.listOfSlides);
-        verifySelectedAndNonSelectedSlides(listOfSlides, global.selectedSlide);
+        await verifySelectedAndNonSelectedSlides(listOfSlides, global.selectedSlide);
     }
 )
 

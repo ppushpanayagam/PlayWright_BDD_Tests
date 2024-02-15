@@ -1,0 +1,233 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "verify-playstation-page-carousel-slides;successfully-verify-banner-displayed-based-on-carousel-slides-selection",
+        "keyword": "Scenario Outline",
+        "line": 18,
+        "name": "Successfully verify banner displayed based on carousel slides selection",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1613318417
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "the user log into Sony application with valid credentials",
+            "match": {
+              "location": "src/step-definitions/playstation.ts:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2875953874
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "the user select playstation from the menu",
+            "match": {
+              "location": "src/step-definitions/playstation.ts:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4300596458
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "the user should be redirected  to playstation application",
+            "match": {
+              "location": "src/step-definitions/playstation.ts:158"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 7752790
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "the user on the playstation home page",
+            "match": {
+              "location": "src/step-definitions/playstation.ts:62"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 16223417
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "the user select the \"Tekken 8 keyart\" only by one",
+            "match": {
+              "location": "src/step-definitions/playstation.ts:99"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2191049084
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the user should see the corresponding banner for selected \"Tekken 8 keyart\"",
+            "match": {
+              "location": "src/step-definitions/playstation.ts:118"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 13455958
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 315967874
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@dev",
+            "line": 11
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "verify-playstation-page-carousel-slides;successfully-verify-banner-displayed-based-on-carousel-slides-selection",
+        "keyword": "Scenario Outline",
+        "line": 19,
+        "name": "Successfully verify banner displayed based on carousel slides selection",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 807108416
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "the user log into Sony application with valid credentials",
+            "match": {
+              "location": "src/step-definitions/playstation.ts:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1762820208
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "the user select playstation from the menu",
+            "match": {
+              "location": "src/step-definitions/playstation.ts:35"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5150972625
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "the user should be redirected  to playstation application",
+            "match": {
+              "location": "src/step-definitions/playstation.ts:158"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 16732083
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 13,
+            "name": "the user on the playstation home page",
+            "match": {
+              "location": "src/step-definitions/playstation.ts:62"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10764333
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "the user select the \"Helldivers 2 keyart\" only by one",
+            "match": {
+              "location": "src/step-definitions/playstation.ts:99"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1725160582
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "the user should see the corresponding banner for selected \"Helldivers 2 keyart\"",
+            "match": {
+              "location": "src/step-definitions/playstation.ts:118"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3413416
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 230837833
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@dev",
+            "line": 11
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "verify-playstation-page-carousel-slides",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Verify Playstation page carousel slides",
+    "tags": [],
+    "uri": "src/features/playstation-page.feature"
+  }
+]

@@ -4,7 +4,7 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.verifyPlayStationPageTitle = exports.selectSubMenu = exports.clickAcceptCookiesBtn = void 0;
+exports.verifyPlayStationPageTitle = exports.selectSubMenu = exports.clickSpecificSlide = exports.clickAcceptCookiesBtn = void 0;
 var _test = require("playwright/test");
 var locator = _interopRequireWildcard(require("../../config/locators.json"));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
@@ -70,57 +70,57 @@ var clickAcceptCookiesBtn = exports.clickAcceptCookiesBtn = /*#__PURE__*/functio
     return _ref2.apply(this, arguments);
   };
 }();
-function selectMenuItem(_x2, _x3) {
-  return _selectMenuItem.apply(this, arguments);
+function selectAnItemFromList(_x2, _x3) {
+  return _selectAnItemFromList.apply(this, arguments);
 }
-function _selectMenuItem() {
-  _selectMenuItem = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(listOfMenu, menuToSelect) {
+function _selectAnItemFromList() {
+  _selectAnItemFromList = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(listOfMenu, menuToSelect) {
     var _iterator, _step, menu, subMenu;
-    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-      while (1) switch (_context4.prev = _context4.next) {
+    return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+      while (1) switch (_context5.prev = _context5.next) {
         case 0:
           _iterator = _createForOfIteratorHelper(listOfMenu);
-          _context4.prev = 1;
+          _context5.prev = 1;
           _iterator.s();
         case 3:
           if ((_step = _iterator.n()).done) {
-            _context4.next = 14;
+            _context5.next = 14;
             break;
           }
           menu = _step.value;
-          _context4.next = 7;
+          _context5.next = 7;
           return menu.textContent();
         case 7:
-          subMenu = _context4.sent;
+          subMenu = _context5.sent;
           if (!subMenu.includes(menuToSelect)) {
-            _context4.next = 12;
+            _context5.next = 12;
             break;
           }
-          _context4.next = 11;
+          _context5.next = 11;
           return menu.click();
         case 11:
-          return _context4.abrupt("break", 14);
+          return _context5.abrupt("break", 14);
         case 12:
-          _context4.next = 3;
+          _context5.next = 3;
           break;
         case 14:
-          _context4.next = 19;
+          _context5.next = 19;
           break;
         case 16:
-          _context4.prev = 16;
-          _context4.t0 = _context4["catch"](1);
-          _iterator.e(_context4.t0);
+          _context5.prev = 16;
+          _context5.t0 = _context5["catch"](1);
+          _iterator.e(_context5.t0);
         case 19:
-          _context4.prev = 19;
+          _context5.prev = 19;
           _iterator.f();
-          return _context4.finish(19);
+          return _context5.finish(19);
         case 22:
         case "end":
-          return _context4.stop();
+          return _context5.stop();
       }
-    }, _callee4, null, [[1, 16, 19, 22]]);
+    }, _callee5, null, [[1, 16, 19, 22]]);
   }));
-  return _selectMenuItem.apply(this, arguments);
+  return _selectAnItemFromList.apply(this, arguments);
 }
 var selectSubMenu = exports.selectSubMenu = /*#__PURE__*/function () {
   var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(page, menu) {
@@ -132,7 +132,7 @@ var selectSubMenu = exports.selectSubMenu = /*#__PURE__*/function () {
           return page.$$(locator.subMenu_List);
         case 2:
           listOfMenu = _context3.sent;
-          selectMenuItem(listOfMenu, menu);
+          selectAnItemFromList(listOfMenu, menu);
         case 4:
         case "end":
           return _context3.stop();
@@ -141,5 +141,26 @@ var selectSubMenu = exports.selectSubMenu = /*#__PURE__*/function () {
   }));
   return function selectSubMenu(_x4, _x5) {
     return _ref3.apply(this, arguments);
+  };
+}();
+var clickSpecificSlide = exports.clickSpecificSlide = /*#__PURE__*/function () {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(slideToSelect) {
+    var listOfSlides;
+    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+      while (1) switch (_context4.prev = _context4.next) {
+        case 0:
+          _context4.next = 2;
+          return global.playStaionPage.$$(locator.slide_Images);
+        case 2:
+          listOfSlides = _context4.sent;
+          selectAnItemFromList(listOfSlides, slideToSelect);
+        case 4:
+        case "end":
+          return _context4.stop();
+      }
+    }, _callee4);
+  }));
+  return function clickSpecificSlide(_x6) {
+    return _ref4.apply(this, arguments);
   };
 }();

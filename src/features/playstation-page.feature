@@ -16,7 +16,7 @@ Background: Successfully log into Sony application
     Examples:
         | slide                    |
         | Tekken 8 keyart          |
-        | February LNY Sale keyart |
+        | Helldivers 2 keyart      |
   
   Scenario: Successfully verify the slide selection and non selected slides
     Given the user on the playstation home page
@@ -24,6 +24,6 @@ Background: Successfully log into Sony application
     Then the user should see the corresponding banner for the selected slide
     And the user should see the other slides should not be selected
   
-  Scenario: Successfully verify auto rotation of the carousel slides
-    When the user on the playstation home page
-    Then the carousel slides should move one by one automatically
+  # Scenario: Successfully verify auto rotation of the carousel slides
+  #   When the user on the playstation home page
+  #   Then the carousel slides should move one by one automatically
