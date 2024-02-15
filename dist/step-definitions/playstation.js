@@ -456,7 +456,7 @@ function _verifySlideMoveAutomatically() {
           _iterator4.s();
         case 7:
           if ((_step4 = _iterator4.n()).done) {
-            _context16.next = 17;
+            _context16.next = 19;
             break;
           }
           menu = _step4.value;
@@ -466,26 +466,29 @@ function _verifySlideMoveAutomatically() {
         case 12:
           _context16.t1 = _context16.sent;
           (0, _context16.t0)(_context16.t1).toContain('is-selected');
+          _context16.next = 16;
+          return global.playStation.waitForTimeout(3000);
+        case 16:
           count = count + 1;
-        case 15:
+        case 17:
           _context16.next = 7;
           break;
-        case 17:
-          _context16.next = 22;
-          break;
         case 19:
-          _context16.prev = 19;
+          _context16.next = 24;
+          break;
+        case 21:
+          _context16.prev = 21;
           _context16.t2 = _context16["catch"](5);
           _iterator4.e(_context16.t2);
-        case 22:
-          _context16.prev = 22;
+        case 24:
+          _context16.prev = 24;
           _iterator4.f();
-          return _context16.finish(22);
-        case 25:
+          return _context16.finish(24);
+        case 27:
         case "end":
           return _context16.stop();
       }
-    }, _callee16, null, [[5, 19, 22, 25]]);
+    }, _callee16, null, [[5, 21, 24, 27]]);
   }));
   return _verifySlideMoveAutomatically.apply(this, arguments);
 }

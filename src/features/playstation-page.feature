@@ -27,7 +27,7 @@ Background: Successfully log into Sony application
         | slide                              |
         | Ultros keyart                      |
         | Overwatch 2 - Season 9 keyart      |
-  @dev
+  
   Scenario: Successfully verify auto rotation of the carousel slides
     When the user on the playstation home page
     Then the carousel slides should move one by one automatically

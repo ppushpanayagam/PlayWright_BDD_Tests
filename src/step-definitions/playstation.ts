@@ -188,6 +188,7 @@ async function verifySlideMoveAutomatically(locator:string) {
     let count = 1;
     for(const menu of listOfSlides){
         expect(await menu.getAttribute('class')).toContain('is-selected');
+        await global.playStation.waitForTimeout(3000)
         count = count + 1;
     }
 }
