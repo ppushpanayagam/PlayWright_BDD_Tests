@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <style>
+            .violationCard {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            .violationCardLine {
+                display: flex;
+                justify-content: space-between;
+                align-items: start;
+            }
+            .learnMore {
+                margin-bottom: 0.75rem;
+                white-space: nowrap;
+                color: #2557a7;
+            }
+            .card-link {
+                color: #2557a7;
+            }
+            .violationNode {
+                font-size: 0.75rem;
+            }
+            .wrapBreakWord {
+                word-break: break-word;
+            }
+            .summary {
+                font-size: 1rem;
+            }
+            .summarySection {
+                margin: 0.5rem 0;
+            }
+            .hljs {
+                white-space: pre-wrap;
+                width: 100%;
+                background: #f0f0f0;
+            }
+            p {
+                margin-top: 0.3rem;
+            }
+            li {
+                line-height: 1.618;
+            }
+        </style>
+        <!-- Bootstrap CSS -->
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+            integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"
+        ></script>
+        <link
+            rel="stylesheet"
+            href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/stackoverflow-light.min.css"
+        />
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <link
+            rel="icon"
+            href="https://www.deque.com/wp-content/uploads/2018/03/cropped-DQ_SecondaryLogo_HeroBlue_RGB-1-32x32.png"
+            sizes="32x32"
+        />
+        <title>AXE Accessibility Results</title>
+    </head>
+    <body>
+        <div style="padding: 2rem">
+            <h3>
+                AXE Accessibility Results
+            </h3>
+            <div class="summarySection">
+            </div>
+            <h5>axe-core found <span class="badge badge-warning">62</span> violations</h5>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width: 5%">#</th>
+                        <th style="width: 45%">Description</th>
+                        <th style="width: 15%">Axe rule ID</th>
+                        <th style="width: 23%">WCAG</th>
+                        <th style="width: 7%">Impact</th>
+                        <th style="width: 5%">Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"><a href="#1" class="card-link">1</a></th>
+                        <td>Elements must only use supported ARIA attributes</td>
+                        <td>aria-allowed-attr</td>
+                        <td>WCAG 2 Level A, WCAG 4.1.2</td>
+                        <td>critical</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#2" class="card-link">2</a></th>
+                        <td>ARIA role should be appropriate for the element</td>
+                        <td>aria-allowed-role</td>
+                        <td>Best practice</td>
+                        <td>minor</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#3" class="card-link">3</a></th>
+                        <td>Certain ARIA roles must contain particular children</td>
+                        <td>aria-required-children</td>
+                        <td>WCAG 2 Level A, WCAG 1.3.1</td>
+                        <td>critical</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#4" class="card-link">4</a></th>
+                        <td>Certain ARIA roles must be contained by particular parents</td>
+                        <td>aria-required-parent</td>
+                        <td>WCAG 2 Level A, WCAG 1.3.1</td>
+                        <td>critical</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#5" class="card-link">5</a></th>
+                        <td>ARIA attributes must conform to valid values</td>
+                        <td>aria-valid-attr-value</td>
+                        <td>WCAG 2 Level A, WCAG 4.1.2</td>
+                        <td>critical</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#6" class="card-link">6</a></th>
+                        <td>Buttons must have discernible text</td>
+                        <td>button-name</td>
+                        <td>WCAG 2 Level A, WCAG 4.1.2</td>
+                        <td>critical</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#7" class="card-link">7</a></th>
+                        <td>Heading levels should only increase by one</td>
+                        <td>heading-order</td>
+                        <td>Best practice</td>
+                        <td>moderate</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#8" class="card-link">8</a></th>
+                        <td>&lt;html&gt; element must have a valid value for the lang attribute</td>
+                        <td>html-lang-valid</td>
+                        <td>WCAG 2 Level A, WCAG 3.1.1</td>
+                        <td>serious</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#9" class="card-link">9</a></th>
+                        <td>Ensures landmarks are unique</td>
+                        <td>landmark-unique</td>
+                        <td>Best practice</td>
+                        <td>moderate</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#10" class="card-link">10</a></th>
+                        <td>Interactive controls must not be nested</td>
+                        <td>nested-interactive</td>
+                        <td>WCAG 2 Level A, WCAG 4.1.2</td>
+                        <td>serious</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="#11" class="card-link">11</a></th>
+                        <td>All page content should be contained by landmarks</td>
+                        <td>region</td>
+                        <td>Best practice</td>
+                        <td>moderate</td>
+                        <td>43</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Failed</h3>
+            <div class="card violationCard">
+                <div class="card-body">
+                    <div class="violationCardLine">
+                        <h5 class="card-title violationCardTitleItem">
+                            <a id="1">1.</a> Elements must only use supported ARIA attributes
+                        </h5>
+                        <a
+                            href="https:&#x2F;&#x2F;dequeuniversity.com&#x2F;rules&#x2F;axe&#x2F;4.8&#x2F;aria-allowed-attr?application&#x3D;axeAPI"
+                            target="_blank"
+                            class="card-link violationCardTitleItem learnMore"
+                            >Learn more</a
+                        >
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted">aria-allowed-attr</h6>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            WCAG 2 Level A, WCAG 4.1.2
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <p class="card-text">Ensures an element&#39;s role supports its ARIA attributes</p>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            critical
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            Issue Tags: 
+                            <span class="badge bg-light text-dark"> cat.aria </span>
+
+                            <span class="badge bg-light text-dark"> wcag2a </span>
+
+                            <span class="badge bg-light text-dark"> wcag412 </span>
+
+                            <span class="badge bg-light text-dark"> EN-301-549 </span>
+
+                            <span class="badge bg-light text-dark"> EN-9.4.1.2 </span>
+                        </h6>
+                    </div>
+                    <div class="violationNode">
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: 2%">#</th>
+                                    <th style="width: 49%">Issue Description</th>
+                                    <th style="width: 49%">
+                                        To solve this violation, you need to...
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">sup</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;sup class&#x3D;&quot;InlineFootnote js-footnotePopup&quot; aria-expanded&#x3D;&quot;false&quot; aria-controls&#x3D;&quot;close&quot; tabindex&#x3D;&quot;0&quot; data-value&#x3D;&quot;AudioNF1041headphonesWF-1000XM5&quot; data-original-id&#x3D;&quot;AudioNF1041headphonesWF-1000XM5&quot;&gt;1&lt;&#x2F;sup&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix all of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  ARIA attribute is not allowed: aria-expanded&#x3D;&quot;false&quot;</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.Footnotes</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;div data-expander&#x3D;&quot;&quot; aria-expanded&#x3D;&quot;false&quot; class&#x3D;&quot;component Footnotes&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix all of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  ARIA attribute is not allowed: aria-expanded&#x3D;&quot;false&quot;</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card violationCard">
+                <div class="card-body">
+                    <div class="violationCardLine">
+                        <h5 class="card-title violationCardTitleItem">
+                            <a id="2">2.</a> ARIA role should be appropriate for the element
+                        </h5>
+                        <a
+                            href="https:&#x2F;&#x2F;dequeuniversity.com&#x2F;rules&#x2F;axe&#x2F;4.8&#x2F;aria-allowed-role?application&#x3D;axeAPI"
+                            target="_blank"
+                            class="card-link violationCardTitleItem learnMore"
+                            >Learn more</a
+                        >
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted">aria-allowed-role</h6>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            Best practice
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <p class="card-text">Ensures role attribute has an appropriate value for the element</p>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            minor
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            Issue Tags: 
+                            <span class="badge bg-light text-dark"> cat.aria </span>
+
+                            <span class="badge bg-light text-dark"> best-practice </span>
+                        </h6>
+                    </div>
+                    <div class="violationNode">
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: 2%">#</th>
+                                    <th style="width: 49%">Issue Description</th>
+                                    <th style="width: 49%">
+                                        To solve this violation, you need to...
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.WhatsHot__TabItem[role&#x3D;&quot;navigation&quot;]:nth-child(1)</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;li role&#x3D;&quot;navigation&quot; class&#x3D;&quot;WhatsHot__TabItem&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  ARIA role navigation is not allowed for given element</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.WhatsHot__TabItem[role&#x3D;&quot;navigation&quot;]:nth-child(2)</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;li role&#x3D;&quot;navigation&quot; class&#x3D;&quot;WhatsHot__TabItem &quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  ARIA role navigation is not allowed for given element</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.WhatsHot__TabItem[role&#x3D;&quot;navigation&quot;]:nth-child(3)</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;li role&#x3D;&quot;navigation&quot; class&#x3D;&quot;WhatsHot__TabItem&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  ARIA role navigation is not allowed for given element</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card violationCard">
+                <div class="card-body">
+                    <div class="violationCardLine">
+                        <h5 class="card-title violationCardTitleItem">
+                            <a id="3">3.</a> Certain ARIA roles must contain particular children
+                        </h5>
+                        <a
+                            href="https:&#x2F;&#x2F;dequeuniversity.com&#x2F;rules&#x2F;axe&#x2F;4.8&#x2F;aria-required-children?application&#x3D;axeAPI"
+                            target="_blank"
+                            class="card-link violationCardTitleItem learnMore"
+                            >Learn more</a
+                        >
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted">aria-required-children</h6>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            WCAG 2 Level A, WCAG 1.3.1
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <p class="card-text">Ensures elements with an ARIA role that require child roles contain them</p>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            critical
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            Issue Tags: 
+                            <span class="badge bg-light text-dark"> cat.aria </span>
+
+                            <span class="badge bg-light text-dark"> wcag2a </span>
+
+                            <span class="badge bg-light text-dark"> wcag131 </span>
+
+                            <span class="badge bg-light text-dark"> EN-301-549 </span>
+
+                            <span class="badge bg-light text-dark"> EN-9.1.3.1 </span>
+                        </h6>
+                    </div>
+                    <div class="violationNode">
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: 2%">#</th>
+                                    <th style="width: 49%">Issue Description</th>
+                                    <th style="width: 49%">
+                                        To solve this violation, you need to...
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.WhatsHot__TabList</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;ul class&#x3D;&quot;WhatsHot__TabList&quot; role&#x3D;&quot;tablist&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Element has children which are not allowed: [role&#x3D;navigation]</li>
+                                                <li>  Element uses aria-busy&#x3D;&quot;true&quot; while showing a loader</li>
+                                            </ul>
+                                        </div>
+                                        <p><strong>Related node:</strong></p>
+                                        <pre><code class="css text-wrap">.WhatsHot__TabItem[role&#x3D;&quot;navigation&quot;]:nth-child(1)</code></pre>
+                                        <pre><code class="css text-wrap">.WhatsHot__TabItem[role&#x3D;&quot;navigation&quot;]:nth-child(2)</code></pre>
+                                        <pre><code class="css text-wrap">.WhatsHot__TabItem[role&#x3D;&quot;navigation&quot;]:nth-child(3)</code></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card violationCard">
+                <div class="card-body">
+                    <div class="violationCardLine">
+                        <h5 class="card-title violationCardTitleItem">
+                            <a id="4">4.</a> Certain ARIA roles must be contained by particular parents
+                        </h5>
+                        <a
+                            href="https:&#x2F;&#x2F;dequeuniversity.com&#x2F;rules&#x2F;axe&#x2F;4.8&#x2F;aria-required-parent?application&#x3D;axeAPI"
+                            target="_blank"
+                            class="card-link violationCardTitleItem learnMore"
+                            >Learn more</a
+                        >
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted">aria-required-parent</h6>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            WCAG 2 Level A, WCAG 1.3.1
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <p class="card-text">Ensures elements with an ARIA role that require parent roles are contained by them</p>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            critical
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            Issue Tags: 
+                            <span class="badge bg-light text-dark"> cat.aria </span>
+
+                            <span class="badge bg-light text-dark"> wcag2a </span>
+
+                            <span class="badge bg-light text-dark"> wcag131 </span>
+
+                            <span class="badge bg-light text-dark"> EN-301-549 </span>
+
+                            <span class="badge bg-light text-dark"> EN-9.1.3.1 </span>
+                        </h6>
+                    </div>
+                    <div class="violationNode">
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: 2%">#</th>
+                                    <th style="width: 49%">Issue Description</th>
+                                    <th style="width: 49%">
+                                        To solve this violation, you need to...
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">#WhatsHot0</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;button type&#x3D;&quot;button&quot; id&#x3D;&quot;WhatsHot0&quot; class&#x3D;&quot;WhatsHot__Tab -isActive js-datalayer-action-event&quot; role&#x3D;&quot;tab&quot; aria-selected&#x3D;&quot;true&quot; aria-controls&#x3D;&quot;WhatsHotPanel0&quot; data-interactiontype&#x3D;&quot;in-page-click&quot; data-interaction-componenttype&#x3D;&quot;whats_hot&quot; data-interaction-componentid&#x3D;&quot;whats_hot-What&#39;s Hot-en_GL-responsivegrid_structure_top_whtshot&quot; data-actionable-item-value&#x3D;&quot;Latest Products&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Required ARIA parent role not present: tablist</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">#WhatsHot1</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;button type&#x3D;&quot;button&quot; id&#x3D;&quot;WhatsHot1&quot; class&#x3D;&quot;WhatsHot__Tab js-datalayer-action-event&quot; role&#x3D;&quot;tab&quot; aria-selected&#x3D;&quot;false&quot; aria-controls&#x3D;&quot;WhatsHotPanel1&quot; data-interactiontype&#x3D;&quot;in-page-click&quot; data-interaction-componenttype&#x3D;&quot;whats_hot&quot; data-interaction-componentid&#x3D;&quot;whats_hot-What&#39;s Hot-en_GL-responsivegrid_structure_top_whtshot&quot; data-actionable-item-value&#x3D;&quot;Gaming&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Required ARIA parent role not present: tablist</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">#WhatsHot2</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;button type&#x3D;&quot;button&quot; id&#x3D;&quot;WhatsHot2&quot; class&#x3D;&quot;WhatsHot__Tab js-datalayer-action-event&quot; role&#x3D;&quot;tab&quot; aria-selected&#x3D;&quot;false&quot; aria-controls&#x3D;&quot;WhatsHotPanel2&quot; data-interactiontype&#x3D;&quot;in-page-click&quot; data-interaction-componenttype&#x3D;&quot;whats_hot&quot; data-interaction-componentid&#x3D;&quot;whats_hot-What&#39;s Hot-en_GL-responsivegrid_structure_top_whtshot&quot; data-actionable-item-value&#x3D;&quot;Vlogging&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Required ARIA parent role not present: tablist</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">#WhatsHotPanel0</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;div id&#x3D;&quot;WhatsHotPanel0&quot; class&#x3D;&quot;WhatsHot__TabPanel -isActive -visibleSlide -activeSlide&quot; role&#x3D;&quot;tab&quot; aria-hidden&#x3D;&quot;false&quot; aria-labelledby&#x3D;&quot;WhatsHot0&quot; style&#x3D;&quot;width: 1200px;&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Required ARIA parent role not present: tablist</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card violationCard">
+                <div class="card-body">
+                    <div class="violationCardLine">
+                        <h5 class="card-title violationCardTitleItem">
+                            <a id="5">5.</a> ARIA attributes must conform to valid values
+                        </h5>
+                        <a
+                            href="https:&#x2F;&#x2F;dequeuniversity.com&#x2F;rules&#x2F;axe&#x2F;4.8&#x2F;aria-valid-attr-value?application&#x3D;axeAPI"
+                            target="_blank"
+                            class="card-link violationCardTitleItem learnMore"
+                            >Learn more</a
+                        >
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted">aria-valid-attr-value</h6>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            WCAG 2 Level A, WCAG 4.1.2
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <p class="card-text">Ensures all ARIA attributes have valid values</p>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            critical
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            Issue Tags: 
+                            <span class="badge bg-light text-dark"> cat.aria </span>
+
+                            <span class="badge bg-light text-dark"> wcag2a </span>
+
+                            <span class="badge bg-light text-dark"> wcag412 </span>
+
+                            <span class="badge bg-light text-dark"> EN-301-549 </span>
+
+                            <span class="badge bg-light text-dark"> EN-9.4.1.2 </span>
+                        </h6>
+                    </div>
+                    <div class="violationNode">
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: 2%">#</th>
+                                    <th style="width: 49%">Issue Description</th>
+                                    <th style="width: 49%">
+                                        To solve this violation, you need to...
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.GlobalHeaderNavi__NavOpener</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;GlobalHeaderNavi__NavOpener js-datalayer-action-event&quot; aria-label&#x3D;&quot;ariaLabelOpen&quot; aria-controls&#x3D;&quot;Main Menu&quot; aria-expanded&#x3D;&quot;true&quot; data-interaction-componenttype&#x3D;&quot;global_header&quot; data-interaction-componentid&#x3D;&quot;global_header-Global Header Component-en_GB-root_globalheader_copy_co&quot; data-interactiontype&#x3D;&quot;in-page-click&quot; data-actionable-item-value&#x3D;&quot;nav opener&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix all of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Invalid ARIA attribute value: aria-controls&#x3D;&quot;Main Menu&quot;</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card violationCard">
+                <div class="card-body">
+                    <div class="violationCardLine">
+                        <h5 class="card-title violationCardTitleItem">
+                            <a id="6">6.</a> Buttons must have discernible text
+                        </h5>
+                        <a
+                            href="https:&#x2F;&#x2F;dequeuniversity.com&#x2F;rules&#x2F;axe&#x2F;4.8&#x2F;button-name?application&#x3D;axeAPI"
+                            target="_blank"
+                            class="card-link violationCardTitleItem learnMore"
+                            >Learn more</a
+                        >
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted">button-name</h6>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            WCAG 2 Level A, WCAG 4.1.2
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <p class="card-text">Ensures buttons have discernible text</p>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            critical
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            Issue Tags: 
+                            <span class="badge bg-light text-dark"> cat.name-role-value </span>
+
+                            <span class="badge bg-light text-dark"> wcag2a </span>
+
+                            <span class="badge bg-light text-dark"> wcag412 </span>
+
+                            <span class="badge bg-light text-dark"> section508 </span>
+
+                            <span class="badge bg-light text-dark"> section508.22.a </span>
+
+                            <span class="badge bg-light text-dark"> TTv5 </span>
+
+                            <span class="badge bg-light text-dark"> TT6.a </span>
+
+                            <span class="badge bg-light text-dark"> EN-301-549 </span>
+
+                            <span class="badge bg-light text-dark"> EN-9.4.1.2 </span>
+
+                            <span class="badge bg-light text-dark"> ACT </span>
+                        </h6>
+                    </div>
+                    <div class="violationNode">
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: 2%">#</th>
+                                    <th style="width: 49%">Issue Description</th>
+                                    <th style="width: 49%">
+                                        To solve this violation, you need to...
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.-SpacingTopSmall-10 &gt; .component-content[data-componenttype&#x3D;&quot;promotion_tiles&quot;] &gt; .PromotionTiles__Body.-White &gt; .PromotionTiles__Inner &gt; .SwiperContainer &gt; .PromotionTiles__ItemContainer &gt; .PromotionTilesItem__Swiper[data-swiper&#x3D;&quot;PromotionTilesItem&quot;][data-swiper-media-all&#x3D;&quot;slidesPerView:&#39;auto&#39;;&quot;] &gt; .PromotionTilesItem__NextButton[data-actionable-item-value&#x3D;&quot;right&quot;][data-interactiontype&#x3D;&quot;slide&quot;]</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;button class&#x3D;&quot;PromotionTilesItem__NextButton js-datalayer-action-event&quot; tabindex&#x3D;&quot;0&quot; role&#x3D;&quot;button&quot; aria-disabled&#x3D;&quot;false&quot; data-interaction-componenttype&#x3D;&quot;promotion_tiles&quot; data-interaction-componentid&#x3D;&quot;promotion_tiles-Promotion Tiles-en_GL-responsivegrid_structure_top_promotiontiles_copy&quot; data-interactiontype&#x3D;&quot;slide&quot; data-actionable-item-value&#x3D;&quot;right&quot; aria-label&#x3D;&quot;&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Element does not have inner text that is visible to screen readers</li>
+                                                <li>  aria-label attribute does not exist or is empty</li>
+                                                <li>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty</li>
+                                                <li>  Element has no title attribute</li>
+                                                <li>  Element&#39;s default semantics were not overridden with role&#x3D;&quot;none&quot; or role&#x3D;&quot;presentation&quot;</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.ColumnsSlideshowItem__PrevButton</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;button class&#x3D;&quot;ColumnsSlideshowItem__PrevButton js-datalayer-action-event&quot; data-interaction-componenttype&#x3D;&quot;columns_slideshow&quot; data-interaction-componentid&#x3D;&quot;columns_slideshow-Columns Slide Show-en_GL-responsivegrid_structure_top_columnsslideshow_cop&quot; data-interactiontype&#x3D;&quot;slide&quot; data-actionable-item-value&#x3D;&quot;left&quot; tabindex&#x3D;&quot;0&quot; role&#x3D;&quot;button&quot; aria-label&#x3D;&quot;&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Element does not have inner text that is visible to screen readers</li>
+                                                <li>  aria-label attribute does not exist or is empty</li>
+                                                <li>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty</li>
+                                                <li>  Element has no title attribute</li>
+                                                <li>  Element&#39;s default semantics were not overridden with role&#x3D;&quot;none&quot; or role&#x3D;&quot;presentation&quot;</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.ColumnsSlideshowItem__NextButton</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;button class&#x3D;&quot;ColumnsSlideshowItem__NextButton js-datalayer-action-event&quot; data-interaction-componenttype&#x3D;&quot;columns_slideshow&quot; data-interaction-componentid&#x3D;&quot;columns_slideshow-Columns Slide Show-en_GL-responsivegrid_structure_top_columnsslideshow_cop&quot; data-interactiontype&#x3D;&quot;slide&quot; data-actionable-item-value&#x3D;&quot;right&quot; tabindex&#x3D;&quot;0&quot; role&#x3D;&quot;button&quot; aria-label&#x3D;&quot;&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Element does not have inner text that is visible to screen readers</li>
+                                                <li>  aria-label attribute does not exist or is empty</li>
+                                                <li>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty</li>
+                                                <li>  Element has no title attribute</li>
+                                                <li>  Element&#39;s default semantics were not overridden with role&#x3D;&quot;none&quot; or role&#x3D;&quot;presentation&quot;</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.ToPageTop__Button</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;button type&#x3D;&quot;button&quot; role&#x3D;&quot;button&quot; class&#x3D;&quot;ToPageTop__Button&quot;&gt;&lt;&#x2F;button&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Element does not have inner text that is visible to screen readers</li>
+                                                <li>  aria-label attribute does not exist or is empty</li>
+                                                <li>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty</li>
+                                                <li>  Element has no title attribute</li>
+                                                <li>  Element&#39;s default semantics were not overridden with role&#x3D;&quot;none&quot; or role&#x3D;&quot;presentation&quot;</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card violationCard">
+                <div class="card-body">
+                    <div class="violationCardLine">
+                        <h5 class="card-title violationCardTitleItem">
+                            <a id="7">7.</a> Heading levels should only increase by one
+                        </h5>
+                        <a
+                            href="https:&#x2F;&#x2F;dequeuniversity.com&#x2F;rules&#x2F;axe&#x2F;4.8&#x2F;heading-order?application&#x3D;axeAPI"
+                            target="_blank"
+                            class="card-link violationCardTitleItem learnMore"
+                            >Learn more</a
+                        >
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted">heading-order</h6>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            Best practice
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <p class="card-text">Ensures the order of headings is semantically correct</p>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            moderate
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            Issue Tags: 
+                            <span class="badge bg-light text-dark"> cat.semantics </span>
+
+                            <span class="badge bg-light text-dark"> best-practice </span>
+                        </h6>
+                    </div>
+                    <div class="violationNode">
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: 2%">#</th>
+                                    <th style="width: 49%">Issue Description</th>
+                                    <th style="width: 49%">
+                                        To solve this violation, you need to...
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.PrimaryTout__Headline</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;h3 class&#x3D;&quot;PrimaryTout__Headline&quot;&gt;Sony BRAVIA&lt;&#x2F;h3&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Heading order invalid</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card violationCard">
+                <div class="card-body">
+                    <div class="violationCardLine">
+                        <h5 class="card-title violationCardTitleItem">
+                            <a id="8">8.</a> &lt;html&gt; element must have a valid value for the lang attribute
+                        </h5>
+                        <a
+                            href="https:&#x2F;&#x2F;dequeuniversity.com&#x2F;rules&#x2F;axe&#x2F;4.8&#x2F;html-lang-valid?application&#x3D;axeAPI"
+                            target="_blank"
+                            class="card-link violationCardTitleItem learnMore"
+                            >Learn more</a
+                        >
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted">html-lang-valid</h6>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            WCAG 2 Level A, WCAG 3.1.1
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <p class="card-text">Ensures the lang attribute of the &lt;html&gt; element has a valid value</p>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            serious
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            Issue Tags: 
+                            <span class="badge bg-light text-dark"> cat.language </span>
+
+                            <span class="badge bg-light text-dark"> wcag2a </span>
+
+                            <span class="badge bg-light text-dark"> wcag311 </span>
+
+                            <span class="badge bg-light text-dark"> TTv5 </span>
+
+                            <span class="badge bg-light text-dark"> TT11.a </span>
+
+                            <span class="badge bg-light text-dark"> EN-301-549 </span>
+
+                            <span class="badge bg-light text-dark"> EN-9.3.1.1 </span>
+
+                            <span class="badge bg-light text-dark"> ACT </span>
+                        </h6>
+                    </div>
+                    <div class="violationNode">
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: 2%">#</th>
+                                    <th style="width: 49%">Issue Description</th>
+                                    <th style="width: 49%">
+                                        To solve this violation, you need to...
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">html</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;html lang&#x3D;&quot;en_GB&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix all of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Value of lang attribute not included in the list of valid languages</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card violationCard">
+                <div class="card-body">
+                    <div class="violationCardLine">
+                        <h5 class="card-title violationCardTitleItem">
+                            <a id="9">9.</a> Ensures landmarks are unique
+                        </h5>
+                        <a
+                            href="https:&#x2F;&#x2F;dequeuniversity.com&#x2F;rules&#x2F;axe&#x2F;4.8&#x2F;landmark-unique?application&#x3D;axeAPI"
+                            target="_blank"
+                            class="card-link violationCardTitleItem learnMore"
+                            >Learn more</a
+                        >
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted">landmark-unique</h6>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            Best practice
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <p class="card-text">Landmarks should have a unique role or role&#x2F;label&#x2F;title (i.e. accessible name) combination</p>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            moderate
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            Issue Tags: 
+                            <span class="badge bg-light text-dark"> cat.semantics </span>
+
+                            <span class="badge bg-light text-dark"> best-practice </span>
+                        </h6>
+                    </div>
+                    <div class="violationNode">
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: 2%">#</th>
+                                    <th style="width: 49%">Issue Description</th>
+                                    <th style="width: 49%">
+                                        To solve this violation, you need to...
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.WhatsHot__TabItem[role&#x3D;&quot;navigation&quot;]:nth-child(1)</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;li role&#x3D;&quot;navigation&quot; class&#x3D;&quot;WhatsHot__TabItem&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable</li>
+                                            </ul>
+                                        </div>
+                                        <p><strong>Related node:</strong></p>
+                                        <pre><code class="css text-wrap">.WhatsHot__TabItem[role&#x3D;&quot;navigation&quot;]:nth-child(2)</code></pre>
+                                        <pre><code class="css text-wrap">.WhatsHot__TabItem[role&#x3D;&quot;navigation&quot;]:nth-child(3)</code></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card violationCard">
+                <div class="card-body">
+                    <div class="violationCardLine">
+                        <h5 class="card-title violationCardTitleItem">
+                            <a id="10">10.</a> Interactive controls must not be nested
+                        </h5>
+                        <a
+                            href="https:&#x2F;&#x2F;dequeuniversity.com&#x2F;rules&#x2F;axe&#x2F;4.8&#x2F;nested-interactive?application&#x3D;axeAPI"
+                            target="_blank"
+                            class="card-link violationCardTitleItem learnMore"
+                            >Learn more</a
+                        >
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted">nested-interactive</h6>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            WCAG 2 Level A, WCAG 4.1.2
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <p class="card-text">Ensures interactive controls are not nested as they are not always announced by screen readers or can cause focus problems for assistive technologies</p>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            serious
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            Issue Tags: 
+                            <span class="badge bg-light text-dark"> cat.keyboard </span>
+
+                            <span class="badge bg-light text-dark"> wcag2a </span>
+
+                            <span class="badge bg-light text-dark"> wcag412 </span>
+
+                            <span class="badge bg-light text-dark"> TTv5 </span>
+
+                            <span class="badge bg-light text-dark"> TT6.a </span>
+
+                            <span class="badge bg-light text-dark"> EN-301-549 </span>
+
+                            <span class="badge bg-light text-dark"> EN-9.4.1.2 </span>
+                        </h6>
+                    </div>
+                    <div class="violationNode">
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: 2%">#</th>
+                                    <th style="width: 49%">Issue Description</th>
+                                    <th style="width: 49%">
+                                        To solve this violation, you need to...
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">#WhatsHotPanel0</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;div id&#x3D;&quot;WhatsHotPanel0&quot; class&#x3D;&quot;WhatsHot__TabPanel -isActive -visibleSlide -activeSlide&quot; role&#x3D;&quot;tab&quot; aria-hidden&#x3D;&quot;false&quot; aria-labelledby&#x3D;&quot;WhatsHot0&quot; style&#x3D;&quot;width: 1200px;&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Element has focusable descendants</li>
+                                            </ul>
+                                        </div>
+                                        <p><strong>Related node:</strong></p>
+                                        <pre><code class="css text-wrap">.WhatsHotItem__Inner[data-marketingvariable-product-model&#x3D;&quot;WH-1000XM5&quot;][data-interaction-componenttype&#x3D;&quot;whats_hot&quot;]</code></pre>
+                                        <pre><code class="css text-wrap">button[data-model-id&#x3D;&quot;WH-1000XM5&quot;]</code></pre>
+                                        <pre><code class="css text-wrap">.WhatsHotItem__Inner[data-marketingvariable-product-supermodel&#x3D;&quot;ILCE-7CM2&quot;][data-marketingvariable-product-model&#x3D;&quot;ILCE-7CM2L,ILCE-7CM2&quot;]</code></pre>
+                                        <pre><code class="css text-wrap">button[data-model-id&#x3D;&quot;ILCE-7CM2&quot;]</code></pre>
+                                        <pre><code class="css text-wrap">.WhatsHotItem__Inner[data-marketingvariable-product-supermodel&#x3D;&quot;Xperia 5 V&quot;][data-marketingvariable-product-model&#x3D;&quot;Xperia 5 V 128GB&quot;]</code></pre>
+                                        <pre><code class="css text-wrap">button[data-model-id&#x3D;&quot;Xperia 5 V&quot;]</code></pre>
+                                        <pre><code class="css text-wrap">.WhatsHotItem__Inner[data-marketingvariable-product-supermodel&#x3D;&quot;A95L Series&quot;][data-marketingvariable-product-model&#x3D;&quot;XR-55A95L,XR-65A95L,XR-77A95L&quot;]</code></pre>
+                                        <pre><code class="css text-wrap">div[data-energy-label&#x3D;&quot;F&quot;] &gt; .EnergyLabel__Opener</code></pre>
+                                        <pre><code class="css text-wrap">button[data-model-id&#x3D;&quot;A95L Series&quot;]</code></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card violationCard">
+                <div class="card-body">
+                    <div class="violationCardLine">
+                        <h5 class="card-title violationCardTitleItem">
+                            <a id="11">11.</a> All page content should be contained by landmarks
+                        </h5>
+                        <a
+                            href="https:&#x2F;&#x2F;dequeuniversity.com&#x2F;rules&#x2F;axe&#x2F;4.8&#x2F;region?application&#x3D;axeAPI"
+                            target="_blank"
+                            class="card-link violationCardTitleItem learnMore"
+                            >Learn more</a
+                        >
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted">region</h6>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            Best practice
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <p class="card-text">Ensures all page content is contained by landmarks</p>
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            moderate
+                        </h6>
+                    </div>
+                    <div class="violationCardLine">
+                        <h6 class="card-subtitle mb-2 text-muted violationCardTitleItem">
+                            Issue Tags: 
+                            <span class="badge bg-light text-dark"> cat.keyboard </span>
+
+                            <span class="badge bg-light text-dark"> best-practice </span>
+                        </h6>
+                    </div>
+                    <div class="violationNode">
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: 2%">#</th>
+                                    <th style="width: 49%">Issue Description</th>
+                                    <th style="width: 49%">
+                                        To solve this violation, you need to...
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.PrimaryTout__Image.-ignoreSmallScreen[alt&#x3D;&quot;Sony BRAVIA&quot;]</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;img class&#x3D;&quot;PrimaryTout__Image -ignoreSmallScreen&quot; src&#x3D;&quot;https:&#x2F;&#x2F;sony.scene7.com&#x2F;is&#x2F;image&#x2F;sonyglobalsolutions&#x2F;primary-desktop-1-1?$toutDesktop$&quot; srcset&#x3D;&quot;https:&#x2F;&#x2F;sony.scene7.com&#x2F;is&#x2F;image&#x2F;sonyglobalsolutions&#x2F;primary-desktop-1-1?$toutDesktop$&quot; alt&#x3D;&quot;Sony BRAVIA&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.PrimaryTout__TextBoxContainer</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;div class&#x3D;&quot;PrimaryTout__TextBoxContainer&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.-SpacingTopSmall-10 &gt; .component-content[data-componenttype&#x3D;&quot;promotion_tiles&quot;] &gt; .PromotionTiles__Body.-White &gt; .PromotionTiles__Inner &gt; .PromotionTiles__Title</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;h2 class&#x3D;&quot;PromotionTiles__Title&quot;&gt;THE LATEST&lt;&#x2F;h2&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.-SpacingTopSmall-10 &gt; .component-content[data-componenttype&#x3D;&quot;promotion_tiles&quot;] &gt; .PromotionTiles__Body.-White &gt; .PromotionTiles__Inner &gt; .SwiperContainer &gt; .PromotionTiles__ItemContainer &gt; .PromotionTilesItem__Swiper[data-swiper&#x3D;&quot;PromotionTilesItem&quot;][data-swiper-media-all&#x3D;&quot;slidesPerView:&#39;auto&#39;;&quot;] &gt; .PromotionTilesItem__Wrapper[data-interactiontype&#x3D;&quot;swipe&quot;][data-interaction-componenttype&#x3D;&quot;promotion_tiles&quot;]</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;div class&#x3D;&quot;PromotionTilesItem__Wrapper js-datalayer-action-event&quot; data-interaction-componenttype&#x3D;&quot;promotion_tiles&quot; data-interaction-componentid&#x3D;&quot;promotion_tiles-Promotion Tiles-en_GL-responsivegrid_structure_top_promotiontiles_copy&quot; data-interactiontype&#x3D;&quot;swipe&quot; style&#x3D;&quot;transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.WhatsHot__Headline</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;h2 class&#x3D;&quot;WhatsHot__Headline&quot;&gt;WHAT&#39;S HOT&lt;&#x2F;h2&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">#WhatsHotPanel0</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;div id&#x3D;&quot;WhatsHotPanel0&quot; class&#x3D;&quot;WhatsHot__TabPanel -isActive -visibleSlide -activeSlide&quot; role&#x3D;&quot;tab&quot; aria-hidden&#x3D;&quot;false&quot; aria-labelledby&#x3D;&quot;WhatsHot0&quot; style&#x3D;&quot;width: 1200px;&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.swiper-slide-duplicate.ColumnsSlideshowItem__Slide[data-swiper-slide-index&#x3D;&quot;6&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; figure</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;figure&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.swiper-slide-duplicate.ColumnsSlideshowItem__Slide[data-swiper-slide-index&#x3D;&quot;6&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Title</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;h2 class&#x3D;&quot;ColumnsSlideshowItem__Title&quot;&gt;Sony&#39;s Original Blended Material&lt;&#x2F;h2&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.swiper-slide-duplicate.ColumnsSlideshowItem__Slide[data-swiper-slide-index&#x3D;&quot;6&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Link[target&#x3D;&quot;_self&quot;][data-interaction-componenttype&#x3D;&quot;columns_slideshow&quot;] &gt; .ColumnsSlideshowItem__LinkText</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;span class&#x3D;&quot;ColumnsSlideshowItem__LinkText&quot;&gt;Detail about Sony&#39;s Original Blended Material&lt;&#x2F;span&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.swiper-slide-duplicate.ColumnsSlideshowItem__Slide[data-swiper-slide-index&#x3D;&quot;7&quot;]</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;div class&#x3D;&quot;component ColumnsSlideshowItem__Slide swiper-slide-duplicate&quot; data-swiper-slide-index&#x3D;&quot;7&quot; style&#x3D;&quot;width: 380px; margin-right: 30px;&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.-activeSlide.-visibleSlide[data-swiper-slide-index&#x3D;&quot;0&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; figure</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;figure&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.-activeSlide.-visibleSlide[data-swiper-slide-index&#x3D;&quot;0&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Title</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;h2 class&#x3D;&quot;ColumnsSlideshowItem__Title&quot;&gt;With BRAVIA, sustainability in every scene&lt;&#x2F;h2&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.-activeSlide.-visibleSlide[data-swiper-slide-index&#x3D;&quot;0&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Link[data-actionable-item-value&#x3D;&quot;Detail about the topic&quot;][target&#x3D;&quot;_self&quot;] &gt; .ColumnsSlideshowItem__LinkText</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;span class&#x3D;&quot;ColumnsSlideshowItem__LinkText&quot;&gt;Detail about the topic&lt;&#x2F;span&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.-nextSlide.-visibleSlide[data-swiper-slide-index&#x3D;&quot;1&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; figure</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;figure&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>15</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.-nextSlide.-visibleSlide[data-swiper-slide-index&#x3D;&quot;1&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Title</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;h2 class&#x3D;&quot;ColumnsSlideshowItem__Title&quot;&gt;Sony’s manufacturing, supported by SORPLAS™&lt;&#x2F;h2&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>16</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.-nextSlide.-visibleSlide[data-swiper-slide-index&#x3D;&quot;1&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Link[target&#x3D;&quot;_self&quot;][data-interaction-componenttype&#x3D;&quot;columns_slideshow&quot;] &gt; .ColumnsSlideshowItem__LinkText</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;span class&#x3D;&quot;ColumnsSlideshowItem__LinkText&quot;&gt;Detail about environmental features in SORPLAS&lt;&#x2F;span&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>17</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.-visibleSlide.ColumnsSlideshowItem__Slide[data-swiper-slide-index&#x3D;&quot;2&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; figure</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;figure&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>18</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.-visibleSlide.ColumnsSlideshowItem__Slide[data-swiper-slide-index&#x3D;&quot;2&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Title</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;h2 class&#x3D;&quot;ColumnsSlideshowItem__Title&quot;&gt;Making Xperia accessible to all&lt;&#x2F;h2&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>19</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.-visibleSlide.ColumnsSlideshowItem__Slide[data-swiper-slide-index&#x3D;&quot;2&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Link[target&#x3D;&quot;_self&quot;][data-interaction-componenttype&#x3D;&quot;columns_slideshow&quot;] &gt; .ColumnsSlideshowItem__LinkText</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;span class&#x3D;&quot;ColumnsSlideshowItem__LinkText&quot;&gt;Detail about Xperia accessibility&lt;&#x2F;span&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>20</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">div[data-swiper-slide-index&#x3D;&quot;3&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; figure</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;figure&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>21</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">div[data-swiper-slide-index&#x3D;&quot;3&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Title</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;h2 class&#x3D;&quot;ColumnsSlideshowItem__Title&quot;&gt;ZV-1F&amp;nbsp;– capturing our environmental vision&lt;&#x2F;h2&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>22</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">div[data-swiper-slide-index&#x3D;&quot;3&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Link[data-actionable-item-value&#x3D;&quot;Detail about the topic&quot;][target&#x3D;&quot;_self&quot;] &gt; .ColumnsSlideshowItem__LinkText</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;span class&#x3D;&quot;ColumnsSlideshowItem__LinkText&quot;&gt;Detail about the topic&lt;&#x2F;span&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>23</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">div[data-swiper-slide-index&#x3D;&quot;4&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; figure</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;figure&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>24</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">div[data-swiper-slide-index&#x3D;&quot;4&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Title</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;h2 class&#x3D;&quot;ColumnsSlideshowItem__Title&quot;&gt;All-round consideration for the environment&lt;&#x2F;h2&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>25</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">div[data-swiper-slide-index&#x3D;&quot;4&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Link[target&#x3D;&quot;_self&quot;][data-interaction-componenttype&#x3D;&quot;columns_slideshow&quot;] &gt; .ColumnsSlideshowItem__LinkText</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;span class&#x3D;&quot;ColumnsSlideshowItem__LinkText&quot;&gt;Detail about environmental features in headphones&lt;&#x2F;span&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>26</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">div[data-swiper-slide-index&#x3D;&quot;5&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; figure</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;figure&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>27</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">div[data-swiper-slide-index&#x3D;&quot;5&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Title</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;h2 class&#x3D;&quot;ColumnsSlideshowItem__Title&quot;&gt;Xperia™: toward zero plastic packaging&lt;&#x2F;h2&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>28</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">div[data-swiper-slide-index&#x3D;&quot;5&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Link[target&#x3D;&quot;_self&quot;][data-interaction-componenttype&#x3D;&quot;columns_slideshow&quot;] &gt; .ColumnsSlideshowItem__LinkText</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;span class&#x3D;&quot;ColumnsSlideshowItem__LinkText&quot;&gt;Detail about toward zero plastic packaging&lt;&#x2F;span&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>29</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.ColumnsSlideshowItem__Slide.component[data-swiper-slide-index&#x3D;&quot;6&quot;]:nth-child(10) &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; figure</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;figure&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>30</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.ColumnsSlideshowItem__Slide.component[data-swiper-slide-index&#x3D;&quot;6&quot;]:nth-child(10) &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Title</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;h2 class&#x3D;&quot;ColumnsSlideshowItem__Title&quot;&gt;Sony&#39;s Original Blended Material&lt;&#x2F;h2&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>31</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.ColumnsSlideshowItem__Slide.component[data-swiper-slide-index&#x3D;&quot;6&quot;]:nth-child(10) &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Link[target&#x3D;&quot;_self&quot;][data-interaction-componenttype&#x3D;&quot;columns_slideshow&quot;] &gt; .ColumnsSlideshowItem__LinkText</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;span class&#x3D;&quot;ColumnsSlideshowItem__LinkText&quot;&gt;Detail about Sony&#39;s Original Blended Material&lt;&#x2F;span&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>32</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.ColumnsSlideshowItem__Slide.component[data-swiper-slide-index&#x3D;&quot;7&quot;]:nth-child(11)</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;div class&#x3D;&quot;component ColumnsSlideshowItem__Slide&quot; data-swiper-slide-index&#x3D;&quot;7&quot; style&#x3D;&quot;width: 380px; margin-right: 30px;&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>33</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.swiper-slide-duplicate-active &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; figure</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;figure&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>34</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.swiper-slide-duplicate-active &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Title</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;h2 class&#x3D;&quot;ColumnsSlideshowItem__Title&quot;&gt;With BRAVIA, sustainability in every scene&lt;&#x2F;h2&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>35</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.swiper-slide-duplicate-active &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Link[data-actionable-item-value&#x3D;&quot;Detail about the topic&quot;][target&#x3D;&quot;_self&quot;] &gt; .ColumnsSlideshowItem__LinkText</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;span class&#x3D;&quot;ColumnsSlideshowItem__LinkText&quot;&gt;Detail about the topic&lt;&#x2F;span&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>36</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.swiper-slide-duplicate-next &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; figure</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;figure&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>37</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.swiper-slide-duplicate-next &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Title</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;h2 class&#x3D;&quot;ColumnsSlideshowItem__Title&quot;&gt;Sony’s manufacturing, supported by SORPLAS™&lt;&#x2F;h2&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>38</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.swiper-slide-duplicate-next &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Link[target&#x3D;&quot;_self&quot;][data-interaction-componenttype&#x3D;&quot;columns_slideshow&quot;] &gt; .ColumnsSlideshowItem__LinkText</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;span class&#x3D;&quot;ColumnsSlideshowItem__LinkText&quot;&gt;Detail about environmental features in SORPLAS&lt;&#x2F;span&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>39</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.swiper-slide-duplicate.ColumnsSlideshowItem__Slide[data-swiper-slide-index&#x3D;&quot;2&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; figure</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;figure&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>40</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.swiper-slide-duplicate.ColumnsSlideshowItem__Slide[data-swiper-slide-index&#x3D;&quot;2&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Title</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;h2 class&#x3D;&quot;ColumnsSlideshowItem__Title&quot;&gt;Making Xperia accessible to all&lt;&#x2F;h2&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>41</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.swiper-slide-duplicate.ColumnsSlideshowItem__Slide[data-swiper-slide-index&#x3D;&quot;2&quot;] &gt; .component-content &gt; .ColumnsSlideshowItem__Container &gt; .ColumnsSlideshowItem__Text &gt; .ColumnsSlideshowItem__Link[target&#x3D;&quot;_self&quot;][data-interaction-componenttype&#x3D;&quot;columns_slideshow&quot;] &gt; .ColumnsSlideshowItem__LinkText</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;span class&#x3D;&quot;ColumnsSlideshowItem__LinkText&quot;&gt;Detail about Xperia accessibility&lt;&#x2F;span&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>42</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.not-processed &gt; .component-content[data-componenttype&#x3D;&quot;promotion_tiles&quot;] &gt; .PromotionTiles__Body.-White &gt; .PromotionTiles__Inner &gt; .PromotionTiles__Title</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;h2 class&#x3D;&quot;PromotionTiles__Title&quot;&gt;α UNIVERSE&lt;&#x2F;h2&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>43</td>
+                                    <td>
+                                        <p><strong>Element location</strong></p>
+                                        <pre><code class="css text-wrap">.not-processed &gt; .component-content[data-componenttype&#x3D;&quot;promotion_tiles&quot;] &gt; .PromotionTiles__Body.-White &gt; .PromotionTiles__Inner &gt; .SwiperContainer &gt; .PromotionTiles__ItemContainer &gt; .PromotionTilesItem__Swiper[data-swiper&#x3D;&quot;PromotionTilesItem&quot;][data-swiper-media-all&#x3D;&quot;slidesPerView:&#39;auto&#39;;&quot;] &gt; .PromotionTilesItem__Wrapper[data-interactiontype&#x3D;&quot;swipe&quot;][data-interaction-componenttype&#x3D;&quot;promotion_tiles&quot;]</code></pre>
+                                        <p><strong>Element source</strong></p>
+                                        <pre><code class="html text-wrap">&lt;div class&#x3D;&quot;PromotionTilesItem__Wrapper js-datalayer-action-event&quot; data-interaction-componenttype&#x3D;&quot;promotion_tiles&quot; data-interaction-componentid&#x3D;&quot;promotion_tiles-ALPHA UNIVERSE 12SPAN GGPD-5756-en_GL-responsivegrid_structure_top_promotiontiles_copy_1269002573&quot; data-interactiontype&#x3D;&quot;swipe&quot; style&#x3D;&quot;transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;&quot;&gt;</code></pre>
+                                    </td>
+                                    <td>
+                                        <div class="wrapBreakWord">
+                                            <p>Fix any of the following:</p>
+                                            <ul class="text-muted">
+                                                <li>  Some page content is not contained by landmarks</li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            hljs.initHighlightingOnLoad();
+        </script>
+    </body>
+</html>

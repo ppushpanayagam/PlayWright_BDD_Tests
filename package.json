@@ -20,6 +20,8 @@
     "@cucumber/cucumber": "^8.0.0-rc.1",
     "@playwright/test": "^1.16.1",
     "@types/node": "^20.11.16",
+    "axe-html-reporter": "^2.2.3",
+    "axe-playwright": "^2.0.1",
     "cucumber-html-reporter": "^7.1.1",
     "dotenv": "^16.4.1",
     "playwright": "^1.16.1",
