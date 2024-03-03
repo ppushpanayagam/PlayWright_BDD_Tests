@@ -57,20 +57,20 @@ export const clickSpecificSlide = async (
 };
 
 export const verifyDisplayedCarouselSlides = async (
-    expectedItems
+    expectedSlideItems
 ): Promise<void> => {
         
     const listOfSlideItems = await global.playStation.$$(locator.slide_Images);
-        await verifyCarouselSlides(listOfSlideItems, expectedItems);
+        await verifyCarouselSlides(listOfSlideItems, expectedSlideItems);
 };
 
 
-async function verifyCarouselSlides(listOfSlideItems, expectedItems) {
+async function verifyCarouselSlides(actualSlideItems, expectedSlideItems) {
     
-    const arr:string[] = expectedItems;
+    const arr:string[] = expectedSlideItems;
         
         var count = 0;
-        for(const menu of listOfSlideItems){
+        for(const menu of actualSlideItems){
 
             expect (await menu.getAttribute('alt')).toBe(arr[count]);
             count = count + 1;
