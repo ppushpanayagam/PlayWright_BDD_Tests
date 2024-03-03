@@ -57,18 +57,17 @@ export const clickSpecificSlide = async (
 };
 
 export const verifyDisplayedCarouselSlides = async (
-    
+    expectedItems
 ): Promise<void> => {
         
     const listOfSlideItems = await global.playStation.$$(locator.slide_Images);
-        await verifyCarouselSlides(listOfSlideItems);
+        await verifyCarouselSlides(listOfSlideItems, expectedItems);
 };
 
 
-async function verifyCarouselSlides(listOfSlideItems) {
+async function verifyCarouselSlides(listOfSlideItems, expectedItems) {
     
-    const arr:string[] = ['Helldivers 2 keyart', ' Final Fantasy XVI Rebirth keyart', 'Ultros keyart', 'Tekken 8 keyart', 
-                            'COD Modern Warfare season 2 keyart', 'Overwatch 2 - Season 9 keyart'];
+    const arr:string[] = expectedItems;
         
         var count = 0;
         for(const menu of listOfSlideItems){

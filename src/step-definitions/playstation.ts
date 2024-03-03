@@ -61,7 +61,7 @@ When(
     /^the carousel slides should be displayed as expected$/,
     async function() {
 
-        await playStationPage.verifyDisplayedCarouselSlides()
+        await playStationPage.verifyDisplayedCarouselSlides(data.slides)
     
     }
 )
